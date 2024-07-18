@@ -2,20 +2,13 @@ import Foundation
 import os.log
 import Network
 import Observation
+import Logging
 
 public enum HTTPMethod: String {
     case GET
     case POST
     case PUT
     case DELETE
-
-    /*
-     Verb    Description
-     GET    Select one or more items. Success returns 200 status code.
-     POST    Create a new item. Success returns 201 status code.
-     PUT    Update an item. Success returns 200 status code.
-     DELETE    Delete an item. Success returns 200 or 204 status code.
-     */
 }
 
 public extension URLRequest {
@@ -44,7 +37,7 @@ public final class Client: ObservableObject, Sendable {
     private var pathMonitor = NWPathMonitor()
     private var networkStatus: Status = .reachable
 
-    private let logger = Logger(subsystem: "com.mcomisso.untitledStreamingApp", category: "Client")
+    private let logger = Logger(subsystem: "com.mcnetworking", category: "Client")
     private let session: URLSession
 
     public init(sessionConfiguration: URLSessionConfiguration = .default) {

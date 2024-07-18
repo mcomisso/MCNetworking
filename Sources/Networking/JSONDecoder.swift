@@ -1,27 +1,5 @@
 import Foundation
 
-public extension JSONDecoder {
-
-    static var traktDecoder: JSONDecoder = {
-        let d = JSONDecoder()
-        d.keyDecodingStrategy = .convertFromSnakeCase
-        d.dateDecodingStrategy = .iso8601
-        return d
-    }()
-
-    static var preconfigured: JSONDecoder = {
-
-        let dateFormatter = ISO8601DateFormatter()
-        dateFormatter.formatOptions.insert(.withFractionalSeconds)
-
-
-        let d = JSONDecoder()
-        d.keyDecodingStrategy = .convertFromSnakeCase
-        d.dateDecodingStrategy = .iso8601withFractionalSeconds
-        return d
-    }()
-}
-
 extension ISO8601DateFormatter {
     convenience init(_ formatOptions: Options) {
         self.init()
